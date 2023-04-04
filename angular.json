@@ -7,30 +7,42 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "inlineTemplate": true,
-          "inlineStyle": true,
+          "path": "projects/webflow-ng-availability-calender/src/components",
+          "displayBlock": true,
+          "changeDetection": "OnPush",
+          "standalone": true,
+          "skipSelector": true,
+          "inlineTemplate": false,
+          "inlineStyle": false,
           "style": "scss",
           "skipTests": true
         },
         "@schematics/angular:class": {
+          "path": "projects/webflow-ng-availability-calender/src/components",
           "skipTests": true
         },
         "@schematics/angular:directive": {
+          "path": "projects/webflow-ng-availability-calender/src/components",
           "skipTests": true
         },
         "@schematics/angular:guard": {
+          "path": "projects/webflow-ng-availability-calender/src/components",
           "skipTests": true
         },
         "@schematics/angular:interceptor": {
+          "path": "projects/webflow-ng-availability-calender/src/components",
           "skipTests": true
         },
         "@schematics/angular:pipe": {
+          "path": "projects/webflow-ng-availability-calender/src/components",
           "skipTests": true
         },
         "@schematics/angular:resolver": {
+          "path": "projects/webflow-ng-availability-calender/src/components",
           "skipTests": true
         },
         "@schematics/angular:service": {
+          "path": "projects/webflow-ng-availability-calender/src/components",
           "skipTests": true
         }
       },
@@ -39,7 +51,7 @@
       "prefix": "ngwebflow",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "outputPath": "dist/webflow-ng-availability-calender",
             "index": "projects/webflow-ng-availability-calender/src/index.html",
@@ -60,19 +72,7 @@
           },
           "configurations": {
             "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "buildOptimizer": false,

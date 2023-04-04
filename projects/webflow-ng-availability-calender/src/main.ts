@@ -1,7 +1,14 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app/app.module';
+import { createCustomElement } from "@angular/elements";
+import { createApplication } from "@angular/platform-browser";
+import { AvailabilityCalenderComponent } from "./components/availability-calender/availability-calender.component";
 
+(async () => {
+  const platform = await createApplication({
+    providers: [],
+  });
+  const injector = platform.injector;
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+  const availabilityCalenderElement = createCustomElement(AvailabilityCalenderComponent, { injector });
+  customElements.define('availability-calender', availabilityCalenderElement);
+})();
