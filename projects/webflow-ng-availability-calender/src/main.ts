@@ -1,7 +1,6 @@
-
-import { createCustomElement } from "@angular/elements";
-import { createApplication } from "@angular/platform-browser";
-import { AvailabilityCalenderComponent } from "./components/availability-calender/availability-calender.component";
+import { createCustomElement } from '@angular/elements';
+import { createApplication } from '@angular/platform-browser';
+import { AvailabilityCalenderComponent } from './components/availability-calendar/availability-calender.component';
 
 (async () => {
   const platform = await createApplication({
@@ -9,6 +8,9 @@ import { AvailabilityCalenderComponent } from "./components/availability-calende
   });
   const injector = platform.injector;
 
-  const availabilityCalenderElement = createCustomElement(AvailabilityCalenderComponent, { injector });
+  const availabilityCalenderElement = createCustomElement(
+    AvailabilityCalenderComponent,
+    { injector }
+  );
   customElements.define('availability-calender', availabilityCalenderElement);
 })();
