@@ -5,8 +5,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 @Component({
   standalone: true,
   imports: [CommonModule, MatCardModule, MatDatepickerModule],
-  templateUrl: './availability-calender.component.html',
-  styleUrls: ['./availability-calender.component.scss'],
+  templateUrl: './availability-calendar.component.html',
+  styleUrls: ['./availability-calendar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AvailabilityCalenderComponent {}
+export class AvailabilityCalendarComponent {}

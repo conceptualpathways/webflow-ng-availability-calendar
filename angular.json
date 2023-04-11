@@ -3,11 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "webflow-ng-availability-calender": {
+    "webflow-ng-availability-calendar": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "path": "projects/webflow-ng-availability-calender/src/components",
+          "path": "projects/webflow-ng-availability-calendar/src/components",
           "displayBlock": true,
           "changeDetection": "OnPush",
           "standalone": true,
@@ -18,55 +18,55 @@
           "skipTests": true
         },
         "@schematics/angular:class": {
-          "path": "projects/webflow-ng-availability-calender/src/components",
+          "path": "projects/webflow-ng-availability-calendar/src/components",
           "skipTests": true
         },
         "@schematics/angular:directive": {
-          "path": "projects/webflow-ng-availability-calender/src/components",
+          "path": "projects/webflow-ng-availability-calendar/src/components",
           "skipTests": true
         },
         "@schematics/angular:guard": {
-          "path": "projects/webflow-ng-availability-calender/src/components",
+          "path": "projects/webflow-ng-availability-calendar/src/components",
           "skipTests": true
         },
         "@schematics/angular:interceptor": {
-          "path": "projects/webflow-ng-availability-calender/src/components",
+          "path": "projects/webflow-ng-availability-calendar/src/components",
           "skipTests": true
         },
         "@schematics/angular:pipe": {
-          "path": "projects/webflow-ng-availability-calender/src/components",
+          "path": "projects/webflow-ng-availability-calendar/src/components",
           "skipTests": true
         },
         "@schematics/angular:resolver": {
-          "path": "projects/webflow-ng-availability-calender/src/components",
+          "path": "projects/webflow-ng-availability-calendar/src/components",
           "skipTests": true
         },
         "@schematics/angular:service": {
-          "path": "projects/webflow-ng-availability-calender/src/components",
+          "path": "projects/webflow-ng-availability-calendar/src/components",
           "skipTests": true
         }
       },
-      "root": "projects/webflow-ng-availability-calender",
-      "sourceRoot": "projects/webflow-ng-availability-calender/src",
+      "root": "projects/webflow-ng-availability-calendar",
+      "sourceRoot": "projects/webflow-ng-availability-calendar/src",
       "prefix": "ngwebflow",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
-            "outputPath": "dist/webflow-ng-availability-calender",
-            "index": "projects/webflow-ng-availability-calender/src/index.html",
-            "main": "projects/webflow-ng-availability-calender/src/main.ts",
+            "outputPath": "dist/webflow-ng-availability-calendar",
+            "index": "projects/webflow-ng-availability-calendar/src/index.html",
+            "main": "projects/webflow-ng-availability-calendar/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "projects/webflow-ng-availability-calender/tsconfig.app.json",
+            "tsConfig": "projects/webflow-ng-availability-calendar/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/webflow-ng-availability-calender/src/favicon.ico",
-              "projects/webflow-ng-availability-calender/src/assets"
+              "projects/webflow-ng-availability-calendar/src/favicon.ico",
+              "projects/webflow-ng-availability-calendar/src/assets"
             ],
             "styles": [
-              "projects/webflow-ng-availability-calender/src/styles.scss"
+              "projects/webflow-ng-availability-calendar/src/styles.scss"
             ],
             "scripts": []
           },
@@ -89,10 +89,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "webflow-ng-availability-calender:build:production"
+              "browserTarget": "webflow-ng-availability-calendar:build:production"
             },
             "development": {
-              "browserTarget": "webflow-ng-availability-calender:build:development"
+              "browserTarget": "webflow-ng-availability-calendar:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -100,7 +100,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "webflow-ng-availability-calender:build"
+            "browserTarget": "webflow-ng-availability-calendar:build"
           }
         }
       }
