@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { DateAdapter, MatNativeDateModule, NativeDateAdapter, MAT_DATE_FORMATS, MAT_NATIVE_DATE_FORMATS } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AvailabilityService } from './data/availability.service';
-import { MatNativeDateModule } from '@angular/material/core';
-import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   standalone: true,
@@ -17,11 +16,21 @@ import { FormControl, FormGroup } from '@angular/forms';
   templateUrl: './availability-calendar.component.html',
   styleUrls: ['./availability-calendar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: NativeDateAdapter
+    },
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: MAT_NATIVE_DATE_FORMATS
+    }
+]
 })
 export class AvailabilityCalendarComponent {
   protected readonly availability$ = this.availabilityService.availability$;
 
-  constructor(private readonly availabilityService: AvailabilityService) {}
+  constructor(private readonly availabilityService: AvailabilityService) { }
 
   //calculate this month and set as start to future rolling 6 months
 
