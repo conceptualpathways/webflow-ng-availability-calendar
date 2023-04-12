@@ -7,10 +7,10 @@ import { AvailabilityModel } from './availability-model';
 })
 export class AvailabilityService {
   public readonly availability$: Observable<AvailabilityModel[]> = of([
-    // {
-    //   startDate: '2023-02-15 16:51:39',
-    //   endDate: '2023-04-28 14:47:11',
-    // },
+    {
+      startDate: '2023-04-15 16:51:39',
+      endDate: '2023-04-28 14:47:11',
+    },
     {
       startDate: '2023-05-31 16:51:39',
       endDate: '2023-06-10 14:47:11',
