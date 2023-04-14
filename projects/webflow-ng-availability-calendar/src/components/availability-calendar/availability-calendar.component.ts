@@ -1,21 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import {
   DateAdapter,
-  MatNativeDateModule,
-  NativeDateAdapter,
   MAT_DATE_FORMATS,
   MAT_NATIVE_DATE_FORMATS,
+  MatNativeDateModule,
+  NativeDateAdapter,
 } from '@angular/material/core';
-import {
-  DateRange,
-  MatDateRangeInput,
-  MatDatepickerModule,
-} from '@angular/material/datepicker';
-import { AvailabilityService } from './data/availability.service';
-import { FormGroup, FormControl, FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { Interval, isWithinInterval, parseISO } from 'date-fns';
+import { map, tap } from 'rxjs';
+import { AvailabilityService } from './data/availability.service';
 
 @Component({
   standalone: true,
@@ -42,26 +40,33 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   ],
 })
 export class AvailabilityCalendarComponent {
-  protected readonly availability$ = this.availabilityService.availability$;
-  public selectedDate = '2023-04-16 16:51:39';
+  private availabilityRanges: Interval[] = [];
 
-  today = new Date();
-  month = this.today.getMonth();
-  year = this.today.getFullYear();
+  protected readonly availability$ = this.availabilityService.availability$.pipe(
+    map(data => {
+      return data.map(dr => ({
+        start: parseISO(dr.startDate),
+        end: parseISO(dr.endDate)
+      } as Interval));
+    }),
+    tap(dr => this.availabilityRanges = dr)
+  );
 
-  start = new Date(this.year, this.month, 13);
-  end = new Date(this.year, this.month, 16);
-  dateRange = new DateRange(this.start, this.end);
+  protected isDateAvailable(date: Date) {
 
-  start2 = new Date(this.year, this.month, 18);
-  end2 = new Date(this.year, this.month, 20);
-  dateRange2 = new DateRange(this.start2, this.end2);
+  console.log(this.availabilityRanges);
+
+    if(this.availabilityRanges){
+    for (const range of this.availabilityRanges) {
+     if(isWithinInterval(date,range)){
+      console.log('True :: '+date + '  Range ' + this.availabilityRanges);
+      return true;
+    }
+    }
+  }
+    console.log('False :: '+date + '  Range ' + this.availabilityRanges);
+    return false;
+  }
 
   constructor(private readonly availabilityService: AvailabilityService) {}
-
-  //calculate this month and set as start to future rolling 6 months
-
-  //calculate the future 6 months
-
-  //get the source data and style those dates as available
 }
