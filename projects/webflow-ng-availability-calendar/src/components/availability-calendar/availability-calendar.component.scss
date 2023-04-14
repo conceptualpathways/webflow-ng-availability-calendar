@@ -20,5 +20,10 @@ mat-calendar {
     .mat-calendar-body-label {
       visibility: hidden;
     }
+
+    .mat-calendar-body-cell:not(.mat-calendar-body-disabled) {
+      background-color: #3898ec33;
+      font-weight: 600;
+    }
   }
 }

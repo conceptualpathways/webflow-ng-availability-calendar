@@ -1,6 +1,6 @@
 {
   "name": "webflow-ng-availability-calendar",
-  "version": "0.0.1-rc.10",
+  "version": "0.0.1-rc.11",
   "scripts": {
     "build": "ng build",
     "actions-build": "pnpm run build"
