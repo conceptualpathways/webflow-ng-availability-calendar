@@ -48,6 +48,12 @@ jobs:
         with:
           ref: release/latest
 
+      - name: Get Version
+        id: version
+        uses: cpdevtools/action-versions@latest
+        with:
+          branch: release/latest
+
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
@@ -57,16 +63,16 @@ jobs:
           tag_name: v${{ steps.version.outputs.targetVersion }}
           body: |
             Generated Release v${{ steps.version.outputs.targetVersion }}
-          draft: "false"
+          draft: false
           prerelease: ${{ steps.version.outputs.targetIsPrerelease }}
           files: |
-            dist/webflow-ng-availability-calendar/main.js
-            dist/webflow-ng-availability-calendar/polyfills.js
-            dist/webflow-ng-availability-calendar/styles.css
-            dist/webflow-ng-availability-calendar/3rdpartylicenses.txt
+            release/main.js
+            release/polyfills.js
+            release/styles.css
+            release/3rdpartylicenses.txt
 
-      - name: Create tags
-        uses: cpdevtools/action-versions@latest
-        with:
-          createTags: all
-          branch: release/latest
+      # - name: Create tags
+      #   uses: cpdevtools/action-versions@latest
+      #   with:
+      #     createTags: all
+      #     branch: release/latest
