@@ -22,6 +22,7 @@ import {
   startOfDay,
   startOfMonth,
   subDays,
+  parse
 } from 'date-fns';
 import { map, tap } from 'rxjs';
 import { AvailabilityService } from './data/availability.service';
@@ -63,8 +64,8 @@ export class AvailabilityCalendarComponent {
         return data.map(
           (dr) =>
             ({
-              start: startOfDay(parseISO(dr.startDate)),
-              end: endOfDay(parseISO(dr.endDate)),
+              start: startOfDay(new Date(dr.startDate)),
+              end: endOfDay(new Date(dr.startDate)),
             } as Interval)
         );
       }),
