@@ -31,8 +31,9 @@ jobs:
 
       - name: Copy to release directory
         run: |
-          rm -Rf release
-          cp -r dist/webflow-ng-availability-calendar/* release
+          rm -Rf release/
+          mkdir release/
+          cp -r dist/webflow-ng-availability-calendar/* release/
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
