@@ -11,7 +11,16 @@ import {
 } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Interval, isWithinInterval, parseISO } from 'date-fns';
+import {
+  Interval,
+  isWithinInterval,
+  parseISO,
+  startOfDay,
+  endOfDay,
+  startOfMonth,
+  endOfMonth,
+  addMonths,
+} from 'date-fns';
 import { map, tap } from 'rxjs';
 import { AvailabilityService } from './data/availability.service';
 
@@ -42,29 +51,37 @@ import { AvailabilityService } from './data/availability.service';
 export class AvailabilityCalendarComponent {
   private availabilityRanges: Interval[] = [];
 
-  protected readonly availability$ = this.availabilityService.availability$.pipe(
-    map(data => {
-      return data.map(dr => ({
-        start: parseISO(dr.startDate),
-        end: parseISO(dr.endDate)
-      } as Interval));
-    }),
-    tap(dr => this.availabilityRanges = dr)
-  );
+  protected readonly availability$ =
+    this.availabilityService.availability$.pipe(
+      map((data) => {
+        return data.map(
+          (dr) =>
+            ({
+              start: startOfDay(parseISO(dr.startDate)),
+              end: endOfDay(parseISO(dr.endDate)),
+            } as Interval)
+        );
+      }),
+      tap((dr) => (this.availabilityRanges = dr))
+    );
+
+  protected startCalDate() {
+    return startOfMonth(Date.now());
+  }
+
+  protected endCalDate(mm: number) {
+    return addMonths(endOfMonth(Date.now()), mm);
+  }
 
   protected isDateAvailable(date: Date) {
-
-  console.log(this.availabilityRanges);
-
-    if(this.availabilityRanges){
-    for (const range of this.availabilityRanges) {
-     if(isWithinInterval(date,range)){
-      console.log('True :: '+date + '  Range ' + this.availabilityRanges);
-      return true;
+    if (this.availabilityRanges) {
+      for (const range of this.availabilityRanges) {
+        if (isWithinInterval(date, range)) {
+          return true;
+        }
+      }
     }
-    }
-  }
-    console.log('False :: '+date + '  Range ' + this.availabilityRanges);
+    console.log('False :: ' + date + '  Range ' + this.availabilityRanges);
     return false;
   }
 

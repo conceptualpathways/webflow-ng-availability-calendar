@@ -1,9 +1,11 @@
 <p>availability-calendar works!-</p>
 
 <mat-card class="ng-calendar-card">
-    <mat-calendar
-    [dateFilter]="isDateAvailable"
-    >
+  <mat-calendar
+    [minDate]="startCalDate()"
+    [maxDate]="endCalDate(2)"
+    [dateFilter]="isDateAvailable.bind(this)"
+  >
   </mat-calendar>
 </mat-card>
 
