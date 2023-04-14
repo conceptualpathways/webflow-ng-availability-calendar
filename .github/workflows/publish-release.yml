@@ -37,7 +37,7 @@ jobs:
           tag_name: v${{ steps.version.outputs.targetVersion }}
           body: |
             Generated Release v${{ steps.version.outputs.targetVersion }}
-          draft: false
+          draft: 'false'
           prerelease: ${{ steps.version.outputs.targetIsPrerelease }}
           files: |
             dist/webflow-ng-availability-calendar/main.js
