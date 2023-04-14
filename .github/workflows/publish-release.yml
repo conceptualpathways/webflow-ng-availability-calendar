@@ -36,12 +36,14 @@ jobs:
           cp -r dist/webflow-ng-availability-calendar/* release/
 
       - name: Commit changes
+        id: commit
         uses: stefanzweifel/git-auto-commit-action@v4
 
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
+          target_commitish: ${{ steps.commit.outputs.commit_hash }}
           name: Release v${{ steps.version.outputs.targetVersion }}
           tag_name: v${{ steps.version.outputs.targetVersion }}
           body: |
@@ -58,3 +60,4 @@ jobs:
         uses: cpdevtools/action-versions@latest
         with:
           createTags: all
+          branch: ${{ steps.commit.outputs.commit_hash }}
