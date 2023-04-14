@@ -7,7 +7,8 @@ on:
       - "v/*"
 
 jobs:
-  generate-image-variations:
+  check_project_builds:
+    name: Check that the project builds
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
