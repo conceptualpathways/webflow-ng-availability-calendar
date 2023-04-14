@@ -29,6 +29,14 @@ jobs:
       - name: Build Project
         uses: cpdevtools/common-github-workflows/.github/actions/run-build@v0.0.15
 
+      - name: Copy to release directory
+        run: |
+          rm -Rf release
+          cp -r dist release
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
@@ -37,7 +45,7 @@ jobs:
           tag_name: v${{ steps.version.outputs.targetVersion }}
           body: |
             Generated Release v${{ steps.version.outputs.targetVersion }}
-          draft: 'false'
+          draft: "false"
           prerelease: ${{ steps.version.outputs.targetIsPrerelease }}
           files: |
             dist/webflow-ng-availability-calendar/main.js
