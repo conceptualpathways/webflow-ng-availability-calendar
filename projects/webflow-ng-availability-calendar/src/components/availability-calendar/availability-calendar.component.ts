@@ -3,26 +3,18 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_NATIVE_DATE_FORMATS,
-  MatNativeDateModule,
-  NativeDateAdapter,
+  DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS,
+  MAT_NATIVE_DATE_FORMATS, NativeDateAdapter
 } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {
-  Interval,
   addMonths,
   endOfDay,
-  endOfMonth,
-  isPast,
-  isWithinInterval,
-  parseISO,
-  startOfDay,
+  endOfMonth, Interval, isPast,
+  isWithinInterval, startOfDay,
   startOfMonth,
-  subDays,
-  parse
+  subDays
 } from 'date-fns';
 import { map, tap } from 'rxjs';
 import { AvailabilityService } from './data/availability.service';
@@ -63,10 +55,10 @@ export class AvailabilityCalendarComponent {
       map((data) => {
         return data.map(
           (dr) =>
-            ({
-              start: startOfDay(new Date(dr.startDate)),
-              end: endOfDay(new Date(dr.startDate)),
-            } as Interval)
+          ({
+            start: startOfDay(new Date(dr.startDate)),
+            end: endOfDay(new Date(dr.endDate)),
+          } as Interval)
         );
       }),
       tap((dr) => (this.availabilityRanges = dr))
@@ -95,5 +87,5 @@ export class AvailabilityCalendarComponent {
     return false;
   }
 
-  constructor(private readonly availabilityService: AvailabilityService) {}
+  constructor(private readonly availabilityService: AvailabilityService) { }
 }
