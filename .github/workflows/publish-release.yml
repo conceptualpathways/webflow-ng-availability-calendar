@@ -1,14 +1,14 @@
 name: Publish Release
 
-# on:
-#   push:
-#     branches:
-#       - "release/*"
 on:
   push:
     branches:
-      - "*"
-      - "v/*"
+      - "release/*"
+# on:
+#   push:
+#     branches:
+#       - "*"
+#       - "v/*"
 
 jobs:
   check_project_builds:
@@ -30,23 +30,23 @@ jobs:
         uses: cpdevtools/common-github-workflows/.github/actions/run-build@v0.0.15
 
 
-      # - name: Create Release
-      #   id: create_release
-      #   uses: softprops/action-gh-release@v1
-      #   with:
-      #     name: Release v${{ steps.version.outputs.targetVersion }}
-      #     tag_name: v${{ steps.version.outputs.targetVersion }}
-      #     body: |
-      #       Generated Release v${{ steps.version.outputs.targetVersion }}
-      #     draft: false
-      #     prerelease: ${{ steps.version.outputs.targetIsPrerelease }}
-      #     files: |
-      #       dist/main.js
-      #       dist/polyfills.js
-      #       dist/styles.css
-      #       dist/3rdpartylicenses.txt
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Release v${{ steps.version.outputs.targetVersion }}
+          tag_name: v${{ steps.version.outputs.targetVersion }}
+          body: |
+            Generated Release v${{ steps.version.outputs.targetVersion }}
+          draft: false
+          prerelease: ${{ steps.version.outputs.targetIsPrerelease }}
+          files: |
+            dist/main.js
+            dist/polyfills.js
+            dist/styles.css
+            dist/3rdpartylicenses.txt
 
-      # - name: Create tags
-      #   uses: cpdevtools/action-versions@latest
-      #   with:
-      #     createTags: all
+      - name: Create tags
+        uses: cpdevtools/action-versions@latest
+        with:
+          createTags: all
