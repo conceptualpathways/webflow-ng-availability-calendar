@@ -1,17 +1,11 @@
-<p>availability-calendar works!</p>
+<p>availability-calendar works!-</p>
 
 <mat-card class="ng-calendar-card">
-  <mat-calendar
-    [minDate]="today"
-    maxDate="2023-10-10"
-    [selected]="dateRange2"
-    matStartDate="2023-04-15"
-    matEndDate="2023-04-17"
-  >
+    <mat-calendar
+    [dateFilter]="isDateAvailable"
+    >
   </mat-calendar>
 </mat-card>
-
-<!--selected: DateRange<D> | D | null -->
 
 The currently selected date.
 
@@ -19,6 +13,4 @@ The currently selected date.
 
 <pre>
   {{ availability$ | async | json }}
-
-  <p>selected Date: {{start}}</p>
 </pre>

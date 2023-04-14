@@ -23,10 +23,10 @@ export class AvailabilityService {
       startDate: '2023-08-04 10:00:34',
       endDate: '2023-08-18 14:47:11',
     },
-    // {
-    //   startDate: '2023-09-27 14:47:11',
-    //   endDate: '2023-09-30 14:47:11',
-    // },
+    {
+      startDate: '2023-09-27 14:47:11',
+      endDate: '2023-09-30 14:47:11',
+    },
     {
       startDate: '2023-09-24 14:47:11',
       endDate: '2023-09-28 14:47:11',

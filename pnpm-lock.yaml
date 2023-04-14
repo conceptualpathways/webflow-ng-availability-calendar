@@ -16,6 +16,7 @@ specifiers:
   '@angular/platform-browser-dynamic': ^15.2.6
   '@angular/router': ^15.2.6
   '@types/jasmine': ~4.3.1
+  date-fns: ^2.29.3
   jasmine-core: ~4.6.0
   karma: ~6.4.1
   karma-chrome-launcher: ~3.1.1
@@ -39,6 +40,7 @@ dependencies:
   '@angular/platform-browser': 15.2.6_feimaifsytcup65o755hc4dp7i
   '@angular/platform-browser-dynamic': 15.2.6_n2pq7ehjjlbnmzq6nreqvmxwky
   '@angular/router': 15.2.6_wjwxqsfq4vao66eh754tffd4ce
+  date-fns: 2.29.3
   rxjs: 7.8.0
   tslib: 2.5.0
   zone.js: 0.13.0
@@ -3909,6 +3911,11 @@ packages:
   /custom-event/1.0.1:
     resolution: {integrity: sha512-GAj5FOq0Hd+RsCGVJxZuKaIDXDf3h6GQoNEjFgbLLI/trgtavwUbSnZ5pVfg27DVCaWjIohryS0JFwIJyT2cMg==}
     dev: true
+
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /date-format/4.0.14:
     resolution: {integrity: sha512-39BOQLs9ZjKh0/patS9nrT8wc3ioX3/eA/zgbKNopnF2wCqJEoxywwwElATYvRsXdnOxA/OQeQoFZ3rFjVajhg==}
