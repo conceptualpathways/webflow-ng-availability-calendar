@@ -64,6 +64,8 @@ export class AvailabilityCalendarComponent {
       tap((dr) => (this.availabilityRanges = dr))
     );
 
+  constructor(private readonly availabilityService: AvailabilityService) { }
+
   protected get startCalDate() {
     return startOfMonth(Date.now());
   }
@@ -87,5 +89,5 @@ export class AvailabilityCalendarComponent {
     return false;
   }
 
-  constructor(private readonly availabilityService: AvailabilityService) { }
+
 }
