@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import {
@@ -50,6 +50,8 @@ import { AvailabilityService } from './data/availability.service';
 })
 export class AvailabilityCalendarComponent {
   private availabilityRanges: Interval[] = [];
+  @Input()
+  public months: number = 6;
 
   protected readonly availability$ =
     this.availabilityService.availability$.pipe(
@@ -65,12 +67,12 @@ export class AvailabilityCalendarComponent {
       tap((dr) => (this.availabilityRanges = dr))
     );
 
-  protected startCalDate() {
+  protected get startCalDate() {
     return startOfMonth(Date.now());
   }
 
-  protected endCalDate(mm: number) {
-    return addMonths(endOfMonth(Date.now()), mm);
+  protected get endCalDate() {
+    return addMonths(endOfMonth(Date.now()), this.months);
   }
 
   protected isDateAvailable(date: Date) {
