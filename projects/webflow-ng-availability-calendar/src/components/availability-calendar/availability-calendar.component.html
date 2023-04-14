@@ -1,10 +1,6 @@
 <ng-container *ngIf="availability$ | async; else loading">
   <mat-card class="ng-calendar-card">
-    <mat-calendar
-      [minDate]="startCalDate"
-      [maxDate]="endCalDate"
-      [dateFilter]="isDateAvailable.bind(this)"
-    >
+    <mat-calendar [minDate]="startCalDate" [maxDate]="endCalDate" [dateFilter]="isDateAvailable.bind(this)">
     </mat-calendar>
   </mat-card>
 </ng-container>
