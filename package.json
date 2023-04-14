@@ -2,11 +2,8 @@
   "name": "webflow-ng-availability-calendar",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "actions-build": "pnpm run build"
   },
   "private": true,
   "dependencies": {
