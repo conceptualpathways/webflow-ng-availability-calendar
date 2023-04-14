@@ -5,3 +5,20 @@
 .highlight {
   background-color: yellow;
 }
+
+mat-calendar {
+  ::ng-deep {
+    mat-month-view {
+      pointer-events: none;
+    }
+    .mat-calendar-period-button {
+      pointer-events: none;
+      .mat-calendar-arrow {
+        display: none;
+      }
+    }
+    .mat-calendar-body-label {
+      visibility: hidden;
+    }
+  }
+}

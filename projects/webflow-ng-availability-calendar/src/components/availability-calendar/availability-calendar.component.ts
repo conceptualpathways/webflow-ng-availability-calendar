@@ -13,13 +13,15 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {
   Interval,
+  addMonths,
+  endOfDay,
+  endOfMonth,
+  isPast,
   isWithinInterval,
   parseISO,
   startOfDay,
-  endOfDay,
   startOfMonth,
-  endOfMonth,
-  addMonths,
+  subDays,
 } from 'date-fns';
 import { map, tap } from 'rxjs';
 import { AvailabilityService } from './data/availability.service';
@@ -52,6 +54,8 @@ export class AvailabilityCalendarComponent {
   private availabilityRanges: Interval[] = [];
   @Input()
   public months: number = 6;
+  @Input()
+  public minDaysBefore: number = 1;
 
   protected readonly availability$ =
     this.availabilityService.availability$.pipe(
@@ -76,6 +80,10 @@ export class AvailabilityCalendarComponent {
   }
 
   protected isDateAvailable(date: Date) {
+    console.log(this.minDaysBefore);
+    if (isPast(subDays(endOfDay(date), +this.minDaysBefore))) {
+      return false;
+    }
     if (this.availabilityRanges) {
       for (const range of this.availabilityRanges) {
         if (isWithinInterval(date, range)) {
@@ -83,7 +91,6 @@ export class AvailabilityCalendarComponent {
         }
       }
     }
-    console.log('False :: ' + date + '  Range ' + this.availabilityRanges);
     return false;
   }
 
