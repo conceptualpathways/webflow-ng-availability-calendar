@@ -29,7 +29,6 @@ jobs:
       - name: Build Project
         uses: cpdevtools/common-github-workflows/.github/actions/run-build@v0.0.15
 
-
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
@@ -41,10 +40,10 @@ jobs:
           draft: false
           prerelease: ${{ steps.version.outputs.targetIsPrerelease }}
           files: |
-            dist/main.js
-            dist/polyfills.js
-            dist/styles.css
-            dist/3rdpartylicenses.txt
+            dist/webflow-ng-availability-calendar/main.js
+            dist/webflow-ng-availability-calendar/polyfills.js
+            dist/webflow-ng-availability-calendar/styles.css
+            dist/webflow-ng-availability-calendar/3rdpartylicenses.txt
 
       - name: Create tags
         uses: cpdevtools/action-versions@latest
