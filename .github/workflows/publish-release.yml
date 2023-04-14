@@ -11,8 +11,8 @@ on:
 #       - "v/*"
 
 jobs:
-  check_project_builds:
-    name: Publish a new version
+  build_release:
+    name: Build the new a new version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -39,11 +39,20 @@ jobs:
         id: commit
         uses: stefanzweifel/git-auto-commit-action@v4
 
+  publish_release:
+    name: Publish the new version
+    needs: build_release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: release/latest
+
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          target_commitish: ${{ steps.commit.outputs.commit_hash }}
+          target_commitish: release/latest
           name: Release v${{ steps.version.outputs.targetVersion }}
           tag_name: v${{ steps.version.outputs.targetVersion }}
           body: |
@@ -60,4 +69,4 @@ jobs:
         uses: cpdevtools/action-versions@latest
         with:
           createTags: all
-          branch: ${{ steps.commit.outputs.commit_hash }}
+          branch: release/latest
