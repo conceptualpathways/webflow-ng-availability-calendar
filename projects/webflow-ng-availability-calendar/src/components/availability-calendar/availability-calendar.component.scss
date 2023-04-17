@@ -21,12 +21,24 @@ mat-calendar {
       visibility: hidden;
     }
 
-    .mat-calendar-body-cell:not(.mat-calendar-body-disabled) {
+    .mat-calendar-body-cell-content:not(.mat-calendar-body-disabled) {
       background-color: #3898ec33;
       font-weight: 600;
+      border-color: #b2b36e40;
+      border-radius: 1em;
     }
-    .mat-calendar-body-disabled > .mat-calendar-body-cell-content {
+
+    .mat-calendar-body-disabled .mat-calendar-body-cell-content {
       text-decoration: line-through;
+      background-color: #b2b36e06;
+      border-color: #cccccc20;
+      border-radius: 1em;
+      font-weight: 400;
+    }
+    .mat-calendar-body-today {
+      background-color: #b2b36e40 !important;
+      border-color: #b2b36e40 !important;
+      border-radius: 1em;
     }
   }
 }
